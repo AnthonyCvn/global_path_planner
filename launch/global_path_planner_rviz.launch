@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+	<!-- Launch the map server -->
+	<arg name="map_file" default="$(find global_path_planner)/map/testmap.yaml"/>
+	<node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+	
+	<!-- Launch the global path planner -->
+	<node pkg="global_path_planner" name="global_path_planner" type="global_path_planner.py" output="screen" />
+
+	<!-- Launch RVIZ -->
+	<arg name="rvizconfig" default="$(find global_path_planner)/rviz/urdf.rviz" />
+	<node name="rviz" pkg="rviz" type="rviz" args="-d $(arg rvizconfig)" required="true" />
+
+</launch>

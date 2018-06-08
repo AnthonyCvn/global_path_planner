@@ -57,7 +57,7 @@ def a_star_planning(sx, sy, gx, gy, ox, oy, reso, rr):
 
     while 1:
         if not openset:
-            print("Stuck.")
+            # print("Stuck.")
             break
         c_id = min(openset, key=lambda o: openset[o].cost + calc_h(ngoal, openset[o].x, openset[o].y))
         current = openset[int(c_id)]
@@ -69,7 +69,7 @@ def a_star_planning(sx, sy, gx, gy, ox, oy, reso, rr):
                 plt.pause(0.001)
 
         if current.x == ngoal.x and current.y == ngoal.y:
-            print("Find goal")
+            # print("Find goal")
             ngoal.pind = current.pind
             ngoal.cost = current.cost
             break
@@ -148,7 +148,7 @@ def calc_obstacle_map(ox, oy, reso, vr):
         x = ix + minx
         for iy in range(ywidth):
             y = iy + miny
-            print(x, y)
+            # print(x, y)
             for iox, ioy in zip(ox, oy):
                 d = math.sqrt((iox - x)**2 + (ioy - y)**2)
                 if d <= vr / reso:
